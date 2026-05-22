@@ -33,7 +33,7 @@ const AICoach = () => {
     }
   ]);
 
-  const handleSend = (customText) => {
+  const handleSend = useCallback((customText) => {
 
     const finalInput = customText || input;
 
@@ -317,7 +317,7 @@ const AICoach = () => {
 
     }, 1800);
 
-  };
+  }, [input]);
 
   // eslint-disable-next-line react-hooks/exhaustive-deps
   useEffect(() => {
@@ -333,7 +333,7 @@ const AICoach = () => {
 
     }
 
-  }, [firstMessage]);
+  }, [firstMessage, handleSend]);
 
   useEffect(() => {
 
