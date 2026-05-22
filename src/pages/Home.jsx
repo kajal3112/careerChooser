@@ -9,30 +9,6 @@ const Home = () => {
 
   const [interest, setInterest] = useState("");
   const navigate = useNavigate();
-  const [prompt, setPrompt] = useState("");
-
-  const features = [
-    {
-      icon: "💬",
-      title: "AI Coach",
-      desc: "AI that understands student interests and learning behavior."
-    },
-    {
-      icon: "💼",
-      title: "Career Discovery",
-      desc: "Discover modern and future-ready career opportunities."
-    },
-    {
-      icon: "📖",
-      title: "Subject Mapping",
-      desc: "Understand where school subjects are used in real careers."
-    },
-    {
-      icon: "🗺️",
-      title: "Roadmaps",
-      desc: "Generate personalized learning and career roadmaps."
-    }
-  ];
 
   const handleGenerate = () => {
 

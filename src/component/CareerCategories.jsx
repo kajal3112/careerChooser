@@ -1,5 +1,4 @@
 import { useNavigate } from "react-router-dom";
-import CareerPreview from "../pages/CareerPreview";
 
 const CareerCategories = () => {
 

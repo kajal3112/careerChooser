@@ -2,13 +2,11 @@ import RoadmapCard from "../component/RoadmapCard";
 import { useLocation } from "react-router-dom";
 import PageWrapper from "../component/PageWrapper";
 import { useEffect, useState } from "react";
-import { useNavigate } from "react-router-dom";
 import Navbar from "../component/Navbar";
 
 const Roadmap = () => {
 
   const location = useLocation();
-  const navigate = useNavigate();
   const career = location.state?.career || "AI Engineer";
 
   const [ loading, setLoading ] = useState(false);
