@@ -139,6 +139,27 @@ const Navbar = () => {
         Career Preview
       </NavLink>
 
+      <NavLink
+          to="/explore"
+          className={({ isActive }) =>
+          `
+            text-sm
+            tracking-wide
+            transition-all
+            duration-300
+            ${
+              isActive
+                ? "text-green-400"
+                : "text-gray-400 hover:text-green-400"
+            }
+            `
+          }
+          >
+
+            Explore Careers
+
+      </NavLink>
+
   </div>
 
         {/* RIGHT BUTTON */}
@@ -280,6 +301,26 @@ const Navbar = () => {
           >
 
             Dashboard
+
+          </NavLink>
+
+          <NavLink
+            to="/explore"
+            onClick={() => setMenuOpen(false)}
+            className="
+              block
+              py-3
+              px-4
+              rounded-2xl
+              bg-[#0B1120]
+              text-gray-300
+              hover:text-green-400
+              transition-all
+              duration-300
+            "
+          >
+
+            Explore Careers
 
           </NavLink>
 
