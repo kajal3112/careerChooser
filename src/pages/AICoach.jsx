@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import PageWrapper from "../component/PageWrapper";
 import { useEffect, useRef } from "react";
@@ -29,22 +29,6 @@ const AICoach = () => {
       text: "Hi 👋 I'm your AI Career Coach. Tell me about your interests, hobbies, or what excites you."
     }
   ]);
-
-// eslint-disable-next-line react-hooks/exhaustive-deps
-  useEffect(() => {
-
-    if (
-      firstMessage &&
-      !hasSentInitialMessage.current
-    ) {
-
-      hasSentInitialMessage.current = true;
-
-      handleSend(firstMessage);
-
-    }
-
-  }, [firstMessage]);
 
   useEffect(() => {
     scrollToBottom();
@@ -109,7 +93,7 @@ const AICoach = () => {
     ]
   });
 
-  const handleSend = (customText) => {
+  const handleSend = useCallback((customText) => {
 
     const finalInput = customText || input;
 
@@ -393,7 +377,23 @@ const AICoach = () => {
 
     }, 1800);
 
-  };
+  }, [input]);
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(() => {
+
+    if (
+      firstMessage &&
+      !hasSentInitialMessage.current
+    ) {
+
+      hasSentInitialMessage.current = true;
+
+      handleSend(firstMessage);
+
+    }
+
+  }, [firstMessage, handleSend]);
 
   return (
   <PageWrapper>
