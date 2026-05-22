@@ -1,102 +1,203 @@
-import { Link } from "react-router-dom";
-import { useState } from "react";
+import { motion } from "framer-motion";
+import { useNavigate } from "react-router-dom";
 
 const CareerCard = ({ career }) => {
-  const [hover, setHover] = useState(false);
+
+  const navigate = useNavigate();
 
   return (
-    <Link
-      to={`/career/${career.id}`}
-      style={{
-        textDecoration: "none",
-        color: "inherit"
+
+    <motion.div
+
+      whileHover={{
+        y: -8
       }}
+
+      className="
+        group
+        relative
+        overflow-hidden
+        rounded-[32px]
+        border
+        border-green-500/10
+        bg-[#0B1120]/80
+        backdrop-blur-xl
+        p-8
+        hover:border-green-400/30
+        hover:shadow-[0_0_40px_rgba(34,197,94,0.12)]
+        transition-all
+        duration-500
+      "
     >
-      <div
-        onMouseEnter={() => setHover(true)}
-        onMouseLeave={() => setHover(false)}
-        style={{
-          background: "white",
-          borderRadius: "20px",
-          padding: "24px",
-          width: "320px",
-          minHeight: "280px",
-          boxShadow: hover
-            ? "0 12px 30px rgba(0,0,0,0.12)"
-            : "0 4px 12px rgba(0,0,0,0.06)",
-          transform: hover
-            ? "translateY(-8px)"
-            : "translateY(0)",
-          transition: "all 0.3s ease",
-          border: "1px solid #eee",
-          cursor: "pointer",
-          display: "flex",
-          flexDirection: "column",
-          justifyContent: "space-between"
-        }}
-      >
-        {/* TOP SECTION */}
 
-        <div>
-          <p
-            style={{
-              fontSize: "14px",
-              color: "#666",
-              marginBottom: "10px",
-              fontWeight: "500"
-            }}
-          >
-            {career.category}
-          </p>
+      {/* GLOW */}
 
-          <h2
-            style={{
-              fontSize: "28px",
-              marginBottom: "14px"
-            }}
-          >
-            {career.name}
-          </h2>
+      <div className="
+        absolute
+        top-0
+        right-0
+        w-40
+        h-40
+        bg-green-400/5
+        blur-3xl
+        rounded-full
+      "></div>
 
-          <p
-            style={{
-              color: "#555",
-              lineHeight: "1.7",
-              fontSize: "15px"
-            }}
-          >
-            {career.description}
-          </p>
-        </div>
+      {/* CATEGORY */}
 
-        {/* SKILLS */}
+      <div className="
+        inline-flex
+        px-4
+        py-2
+        rounded-full
+        bg-green-400/10
+        border
+        border-green-500/10
+        text-green-400
+        text-xs
+        tracking-[2px]
+        mb-8
+      ">
 
-        <div
-          style={{
-            marginTop: "20px",
-            display: "flex",
-            gap: "10px",
-            flexWrap: "wrap"
-          }}
-        >
-          {career.skills.slice(0, 3).map((skill, index) => (
+        FUTURE CAREER
+
+      </div>
+
+      {/* TITLE */}
+
+      <h2 className="
+        text-3xl
+        font-bold
+        mb-5
+        leading-tight
+      ">
+
+        {career.name}
+
+      </h2>
+
+      {/* DESCRIPTION */}
+
+      <p className="
+        text-gray-400
+        leading-8
+        mb-8
+      ">
+
+        {career.description}
+
+      </p>
+
+      {/* SUBJECTS */}
+
+      <div className="mb-8">
+
+        <p className="
+          text-sm
+          text-gray-500
+          mb-4
+          tracking-[2px]
+        ">
+
+          SUBJECTS USED
+
+        </p>
+
+        <div className="flex flex-wrap gap-3">
+
+          {career.subjectsUsed?.map((item, index) => (
+
             <span
               key={index}
-              style={{
-                background: "#f3f3f3",
-                padding: "8px 14px",
-                borderRadius: "999px",
-                fontSize: "13px",
-                fontWeight: "500"
-              }}
+              className="
+                px-4
+                py-2
+                rounded-full
+                bg-[#111827]
+                border
+                border-green-500/10
+                text-sm
+                text-gray-300
+              "
             >
-              {skill}
+
+              {item.subject}
+
             </span>
+
           ))}
+
         </div>
+
       </div>
-    </Link>
+
+      {/* FOOTER */}
+
+      <div className="
+        flex
+        items-center
+        justify-between
+        pt-6
+        border-t
+        border-green-500/10
+      ">
+
+        <div>
+
+          <p className="text-gray-500 text-sm">
+
+            Future Demand
+
+          </p>
+
+          <h4 className="
+            text-green-400
+            font-semibold
+            mt-1
+          ">
+
+            ↑ High Growth
+
+          </h4>
+
+        </div>
+
+        <button
+
+          onClick={() =>
+            navigate("/career-preview", {
+              state: {
+                career: {
+                  title: career.name,
+                  desc: career.description
+                }
+              }
+            })
+          }
+
+          className="
+            px-5
+            py-3
+            rounded-2xl
+            bg-green-400
+            text-black
+            font-semibold
+            hover:scale-105
+            transition-all
+            duration-300
+          "
+        >
+
+          Explore →
+
+        </button>
+
+      </div>
+
+    </motion.div>
+
   );
+
 };
 
 export default CareerCard;

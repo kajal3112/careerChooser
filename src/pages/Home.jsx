@@ -139,7 +139,7 @@ const Home = () => {
               hover:shadow-[0_0_30px_rgba(34,197,94,0.5)]
               transition-all
               duration-300
-              ">
+              " onClick={() => navigate("/explore")}>
 
                 Explore Careers
 
@@ -581,7 +581,9 @@ const Home = () => {
 
           </p>
 
-          <button className="mt-10 bg-green-400 text-black px-10 py-5 rounded-2xl font-semibold hover:scale-105 transition duration-300">
+          <button className="mt-10 bg-green-400 text-black px-10 py-5 rounded-2xl font-semibold hover:scale-105 transition duration-300" onClick={() => {
+              navigate("/ai-coach");
+            }}>
 
             Get Started
 

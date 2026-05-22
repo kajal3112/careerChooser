@@ -40,7 +40,7 @@ const CareerPreview = () => {
               <br />
 
               <span className="text-green-400">
-                {career}
+                {career.name || career.title || career}
               </span>
 
             </h1>
